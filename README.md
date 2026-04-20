@@ -12,7 +12,7 @@ EDA steps performed
 
 Loaded dataset and checked shape, dtypes, and sample rows using df.info() and df.describe()
 Confirmed no missing values across all 26 features
-Identified 13 binary/categorical columns and 13 numeric columns
+Identified 13 binary/categorical columns and 13 numeric columns      
 
 2. Target variable analysis
 
