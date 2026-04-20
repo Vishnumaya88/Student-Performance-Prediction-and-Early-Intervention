@@ -5,7 +5,7 @@ Student Performance Prediction — UCI Dataset
 This folder contains the exploratory data analysis performed on the UCI Student Performance dataset (Math course, n = 395) prior to model training.
 
 Objective
-Understand the structure, distributions, relationships, and anomalies in the dataset before building predictive models. EDA informed feature selection, preprocessing decisions, and model design.
+Understand the structure, distributions, relationships, and anomalies in the dataset before building predictive models. EDA informed feature selection, preprocessing decisions, and model design.  
 
 EDA steps performed
 1. Dataset inspection
