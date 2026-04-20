@@ -6,7 +6,7 @@ This folder contains the exploratory data analysis performed on the UCI Student 
 
 Objective
 Understand the structure, distributions, relationships, and anomalies in the dataset before building predictive models. EDA informed feature selection, preprocessing decisions, and model design.  
-
+             
 EDA steps performed
 1. Dataset inspection
 
