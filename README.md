@@ -1,76 +1,134 @@
-# Student-Performance-Prediction-and-Early-Intervention
-This section of the project focuses on Exploratory Data Analysis (EDA) to understand the dataset before building predictive models. The goal is to identify patterns, detect anomalies, test hypotheses, and check assumptions using summary statistics and visualizations.
+# Student Performance Prediction and Early Intervention
 
-Student Performance Prediction — UCI Dataset
-This folder contains the exploratory data analysis performed on the UCI Student Performance dataset (Math course, n = 395) prior to model training.
+## Problem Statement
 
-Objective
-Understand the structure, distributions, relationships, and anomalies in the dataset before building predictive models. EDA informed feature selection, preprocessing decisions, and model design.  
-             
-EDA steps performed
-1. Dataset inspection
+The goal of this project is to predict whether a student will pass or fail based on demographic, academic, and behavioral factors. Early identification of at-risk students enables timely intervention and improves academic outcomes.
 
-Loaded dataset and checked shape, dtypes, and sample rows using df.info() and df.describe()
-Confirmed no missing values across all 26 features
-Identified 13 binary/categorical columns and 13 numeric columns      
+## Objectives
 
-2. Target variable analysis
+* Predict student performance (Pass/Fail)
+* Identify at-risk students early
+* Compare multiple machine learning models
+* Explain predictions using LIME
 
-Visualized pass/fail class distribution using a countplot
-Found a mild class imbalance: ~60.5% pass vs ~39.5% fail
-This informed the decision to use AUC-ROC alongside accuracy as the evaluation metric
+## Dataset
 
-3. Grade distribution (G1, G2, G3)
+This project uses the **UCI Student Performance Dataset**.
 
-Plotted histograms for G1, G2, and final grade G3
-All three grades follow a roughly normal distribution centered around 10–12
-G1 and G2 show strong positive correlation with G3 (r ≈ 0.85)
-Students with G3 < 10 are labeled as fail (target = 0)
-
-4. Correlation analysis
-
-Generated a full correlation heatmap for numeric features
-
-6. Categorical feature analysis
-
-Bar charts for school, sex, address, internet access, romantic relationship, etc.
-GP school students make up 77% of the dataset
-Urban students (address = U) pass at a higher rate than rural
-Internet access at home positively associated with passing
-
-7. Outlier detection
-
-Used IQR method on numeric columns
-absences had the most outliers (students with 30–40 absences)
-age had a few outliers (students aged 20–22)
-Outliers were retained as they represent genuine real-world cases
-
-8. Pairplot (multivariate)
-
-Pairplot of G1, G2, G3, absences, studytime coloured by pass/fail
-Clear linear separation between pass/fail along the G1/G2/G3 axes
-No clear separation on studytime or absences alone — these are weaker signals
-
-Problem: Predict student performance early
-Goal: Identify students at risk of failing
-Impact: Helps teachers/counselors intervene early
-
-Objectives
- - Predict student performance (Pass/Fail)
- - Identify at-risk students early
- - Provide explanations using LIME for decision support
-
-Dataset
-
-This project uses the UCI Student Performance Dataset.
 The dataset contains:
- - Demographics (age, gender, family background)
- - Academic details (study time, failures, absences)
- - Grades (G1, G2, G3)
+
+* Demographic information (age, gender, family background)
+* Academic details (study time, failures, absences)
+* Grades (G1, G2, G3)
 
 Target Variable
 
 Final grade (G3) is converted into:
- - Pass (G3 ≥ 10)
- - Fail (G3 < 10)
+
+* **Pass (1)** → G3 ≥ 10
+* **Fail (0)** → G3 < 10
+
+## Project Pipeline
+
+1. Data Understanding
+
+* Explored dataset structure and features
+* Checked missing values and duplicates
+
+2. Data Preprocessing
+
+* Created target variable (Pass/Fail)
+* Removed data leakage features (G1, G2, G3)
+* Encoded categorical variables
+* Performed train-test split
+* Applied feature scaling
+
+3. Exploratory Data Analysis (EDA)
+
+* Pass vs Fail distribution
+* Study time vs performance
+* Absences vs performance
+* Correlation heatmap
+
+ 4. Model Building
+
+Three models were trained:
+* Decision Tree Classifier
+* Logistic Regression
+* Gradient Boosting
+
+Model Performance
+
+| Model               | Accuracy         |
+| ------------------- | ---------------- |
+| Decision Tree       | 64.5%            |
+| Logistic Regression | **70.9% (Best)** |
+| Gradient Boosting   | 68.3%            |
+
+Evaluation
+
+* Logistic Regression performed best
+* Model predicts passing students well
+* Lower recall for failing students (important limitation)
+
+Explainability (LIME)
+
+LIME was used to explain individual predictions:
+
+* Identifies key factors affecting predictions
+* Highlights importance of:
+
+  * Past failures
+  * Study behavior
+  * Social activity
+
+Deployment
+
+A Streamlit application is built to:
+* Take user inputs (study time, absences, failures)
+* Predict student performance (Pass/Fail)
+
+Project Structure
+
+```plaintext
+student-performance-prediction/
+│
+├── data/
+│   └── student-mat.csv
+│
+├── notebooks/
+│   ├── 01_data_understanding.ipynb
+│   ├── 02_preprocessing.ipynb
+│   ├── 03_eda.ipynb
+│   ├── 04_model_training.ipynb
+│
+├── app/
+│   └── streamlit_app.py
+│
+├── model.pkl
+├── scaler.pkl
+├── requirements.txt
+├── README.md
+```
+
+Technologies Used
+
+* Python
+* Pandas, NumPy
+* Scikit-learn
+* Matplotlib, Seaborn
+* LIME
+* Streamlit
+
+Key Insights
+
+* Study time positively impacts performance
+* Past failures strongly affect outcomes
+* Absences negatively influence results
+* Student performance depends on multiple factors
+
+ Conclusion
+
+Logistic Regression achieved the best performance and was selected as the final model. The integration of LIME provides transparency by explaining individual predictions, making the system useful for identifying at-risk students and enabling early intervention.
+
 
