@@ -4,131 +4,159 @@
 
 The goal of this project is to predict whether a student will pass or fail based on demographic, academic, and behavioral factors. Early identification of at-risk students enables timely intervention and improves academic outcomes.
 
+---
+
 ## Objectives
 
-* Predict student performance (Pass/Fail)
-* Identify at-risk students early
-* Compare multiple machine learning models
-* Explain predictions using LIME
+- Predict student performance (Pass/Fail)
+- Identify at-risk students early
+- Compare multiple machine learning models
+
+---
 
 ## Dataset
 
-This project uses the **UCI Student Performance Dataset**.
+This project uses the UCI Student Performance Dataset.
 
-The dataset contains:
+The dataset includes:
+- Demographic information
+- Academic details (study time, failures, absences)
+- Grades (G1, G2, G3)
 
-* Demographic information (age, gender, family background)
-* Academic details (study time, failures, absences)
-* Grades (G1, G2, G3)
-
-Target Variable
+### Target Variable
 
 Final grade (G3) is converted into:
 
-* **Pass (1)** → G3 ≥ 10
-* **Fail (0)** → G3 < 10
+- Pass (1) → G3 ≥ 10  
+- Fail (0) → G3 < 10  
+
+---
 
 ## Project Pipeline
 
-1. Data Understanding
+### 1. Data Understanding
+- Explored dataset structure
+- Checked missing values and duplicates
 
-* Explored dataset structure and features
-* Checked missing values and duplicates
+### 2. Data Preprocessing
+- Created target variable (Pass/Fail)
+- Removed data leakage features (G1, G2, G3)
+- Encoded categorical variables
+- Performed train-test split
 
-2. Data Preprocessing
+### 3. Exploratory Data Analysis (EDA)
+- Pass vs Fail distribution
+- Study time vs performance
+- Absences vs performance
+- Correlation analysis
 
-* Created target variable (Pass/Fail)
-* Removed data leakage features (G1, G2, G3)
-* Encoded categorical variables
-* Performed train-test split
-* Applied feature scaling
+---
 
-3. Exploratory Data Analysis (EDA)
+## Model Training and Evaluation
 
-* Pass vs Fail distribution
-* Study time vs performance
-* Absences vs performance
-* Correlation heatmap
+Three models were trained and evaluated:
 
- 4. Model Building
+### Logistic Regression (Best Model)
+Accuracy: 0.759  
+Confusion Matrix:
 
-Three models were trained:
-* Decision Tree Classifier
-* Logistic Regression
-* Gradient Boosting
+[[12 15]
+[ 4 48]]
 
-Model Performance
 
-| Model               | Accuracy         |
-| ------------------- | ---------------- |
-| Decision Tree       | 64.5%            |
-| Logistic Regression | **70.9% (Best)** |
-| Gradient Boosting   | 68.3%            |
+### Decision Tree
+Accuracy: 0.709  
+Confusion Matrix:
+[[13 14]
+[ 9 43]]
 
-Evaluation
 
-* Logistic Regression performed best
-* Model predicts passing students well
-* Lower recall for failing students (important limitation)
+### Gradient Boosting
+Accuracy: 0.696  
+Confusion Matrix:
+[[ 9 18]
+[ 6 46]]
 
-Explainability (LIME)
 
-LIME was used to explain individual predictions:
+Logistic Regression achieved the best performance and was selected for deployment.
 
-* Identifies key factors affecting predictions
-* Highlights importance of:
+---
 
-  * Past failures
-  * Study behavior
-  * Social activity
+## Web Application
 
-Deployment
+A Streamlit application is developed to:
 
-A Streamlit application is built to:
-* Take user inputs (study time, absences, failures)
-* Predict student performance (Pass/Fail)
+- Accept user inputs:
+  - Age
+  - Study time
+  - Absences
+  - Failures
+- Predict whether a student will pass or fail
 
-Project Structure
+### Files
 
-```plaintext
+- app.py → Streamlit application  
+- model.pkl → trained model  
+- columns.pkl → feature columns used for prediction  
+
+---
+
+## Project Structure
 student-performance-prediction/
 │
-├── data/
-│   └── student-mat.csv
+├── 01_data_understanding.ipynb
+├── 02_data_preprocessing.ipynb
+├── 03_eda.ipynb
+├── 04_model_training_&_evaluation.ipynb
 │
-├── notebooks/
-│   ├── 01_data_understanding.ipynb
-│   ├── 02_preprocessing.ipynb
-│   ├── 03_eda.ipynb
-│   ├── 04_model_training.ipynb
-│
-├── app/
-│   └── streamlit_app.py
-│
+├── app.py
 ├── model.pkl
-├── scaler.pkl
-├── requirements.txt
-├── README.md
-```
-
-Technologies Used
-
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* Matplotlib, Seaborn
-* LIME
-* Streamlit
-
-Key Insights
-
-* Study time positively impacts performance
-* Past failures strongly affect outcomes
-* Absences negatively influence results
-* Student performance depends on multiple factors
-
- Conclusion
-
-Logistic Regression achieved the best performance and was selected as the final model. The integration of LIME provides transparency by explaining individual predictions, making the system useful for identifying at-risk students and enabling early intervention.
+├── columns.pkl
+│
+├── images/
+│ ├── resultimg1.png
+│ └── resultimg2.png
+│
+└── README.md
 
 
+---
+
+## Technologies Used
+
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
+- Matplotlib, Seaborn  
+- Streamlit  
+
+---
+
+## Key Insights
+
+- Study time positively impacts performance  
+- Past failures strongly influence outcomes  
+- Absences negatively affect results  
+- Student performance depends on multiple factors  
+
+---
+
+## Conclusion
+
+Logistic Regression achieved the highest accuracy among the tested models and was selected for deployment. The developed web application enables quick prediction of student performance and helps identify at-risk students.
+
+---
+
+## Application Preview
+
+### Input Page
+![Input](images/resultimg1.png)
+
+### Prediction Result
+![Result](images/resultimg2.png)
+
+---
+
+## Live Application
+
+https://student-performance-prediction-and-early-intervention-st6pqzxw.streamlit.app/
