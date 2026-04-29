@@ -58,25 +58,12 @@ Three models were trained and evaluated:
 
 ### Logistic Regression (Best Model)
 Accuracy: 0.759  
-Confusion Matrix:
-
-[[12 15]
-[ 4 48]]
-
 
 ### Decision Tree
 Accuracy: 0.709  
-Confusion Matrix:
-[[13 14]
-[ 9 43]]
-
 
 ### Gradient Boosting
 Accuracy: 0.696  
-Confusion Matrix:
-[[ 9 18]
-[ 6 46]]
-
 
 Logistic Regression achieved the best performance and was selected for deployment.
 
@@ -149,10 +136,8 @@ Logistic Regression achieved the highest accuracy among the tested models and wa
 
 ## Application Preview
 
-### Input Page
 ![Input](images/resultimg1.png)
 
-### Prediction Result
 ![Result](images/resultimg2.png)
 
 ---
