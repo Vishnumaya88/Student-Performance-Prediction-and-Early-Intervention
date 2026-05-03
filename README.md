@@ -62,10 +62,10 @@ and predicts:
 ## Application Preview
 
 ### PASS Prediction
-![Pass](01_pass.png)
+![Pass](images/01_pass.png)
 
 ### FAIL Prediction
-![Fail](02_fail.png)
+![Fail](images/02_fail.png)
 
 ---
 
