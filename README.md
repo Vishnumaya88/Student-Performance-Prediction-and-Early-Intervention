@@ -59,16 +59,6 @@ and predicts:
 
 ---
 
-## Application Preview
-
-### PASS Prediction
-![Pass](images/01_pass.png)
-
-### FAIL Prediction
-![Fail](images/02_fail.png)
-
----
-
 ## Live Application
 
 https://student-performance-prediction-and-early-intervention-st6pqzxw.streamlit.app/
