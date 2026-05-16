@@ -2,7 +2,6 @@
 
 ## Problem Statement
 
-The objective of this project is to predict whether a student is likely to pass or fail based on academic and behavioral factors, enabling early identification of students who may need support.
 
 ---
 
