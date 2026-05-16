@@ -59,6 +59,22 @@ and predicts:
 
 ---
 
+# 👥 Team Contributions
+
+## Akshaya
+- Exploratory Data Analysis (EDA)
+- Data preprocessing and cleaning
+- Feature analysis and visualization
+- Assisted in result interpretation
+- Contributed to documentation support
+
+## Vishnumaya
+- Dataset understanding and analysis
+- Random Forest model implementation
+- Streamlit web application deployment
+- PPT preparation and project integration
+- Model evaluation and testing
+
 ## Application Preview
 
 ### PASS Prediction
